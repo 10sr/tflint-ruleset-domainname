@@ -1,4 +1,4 @@
-module github.com/terraform-linters/tflint-ruleset-template
+module github.com/10sr/tflint-ruleset-domainname
 
 go 1.20
 
