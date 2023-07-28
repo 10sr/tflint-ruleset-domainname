@@ -7,7 +7,7 @@ import (
 	"github.com/terraform-linters/tflint-plugin-sdk/helper"
 )
 
-func Test_AwsInstanceExampleType(t *testing.T) {
+func Test_Route53DomainName(t *testing.T) {
 	tests := []struct {
 		Name     string
 		Content  string
@@ -16,24 +16,30 @@ func Test_AwsInstanceExampleType(t *testing.T) {
 		{
 			Name: "issue found",
 			Content: `
-resource "aws_instance" "web" {
-    instance_type = "t2.micro"
-}`,
+resource "aws_route53_record" "invalid" {
+    type = "A"
+    name = "lnvalid_domain.example.com"
+}
+resource "aws_route53_record" "valid" {
+    type = "A"
+    name = "valid-domain.example.com"
+}
+`,
 			Expected: helper.Issues{
 				{
-					Rule:    NewAwsInstanceExampleTypeRule(),
-					Message: "instance type is t2.micro",
+					Rule:    NewRoute53DomainNameRule(),
+					Message: "Invalid name for record: lnvalid_domain.example.com",
 					Range: hcl.Range{
 						Filename: "resource.tf",
-						Start:    hcl.Pos{Line: 3, Column: 21},
-						End:      hcl.Pos{Line: 3, Column: 31},
+						Start:    hcl.Pos{Line: 4, Column: 12},
+						End:      hcl.Pos{Line: 4, Column: 40},
 					},
 				},
 			},
 		},
 	}
 
-	rule := NewAwsInstanceExampleTypeRule()
+	rule := NewRoute53DomainNameRule()
 
 	for _, test := range tests {
 		t.Run(test.Name, func(t *testing.T) {
