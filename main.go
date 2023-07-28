@@ -12,10 +12,7 @@ func main() {
 			Name:    "domainname",
 			Version: "0.1.0",
 			Rules: []tflint.Rule{
-				rules.NewAwsInstanceExampleTypeRule(),
-				rules.NewAwsS3BucketExampleLifecycleRule(),
-				rules.NewGoogleComputeSSLPolicyRule(),
-				rules.NewTerraformBackendTypeRule(),
+				rules.NewRoute53DomainNameRule(),
 			},
 		},
 	})
