@@ -16,8 +16,6 @@ archives:
   - id: zip
     name_template: "{{ .ProjectName }}_{{ .Os }}_{{ .Arch }}"
     format: zip
-    files:
-      - none*
 checksum:
   name_template: 'checksums.txt'
 signs:
