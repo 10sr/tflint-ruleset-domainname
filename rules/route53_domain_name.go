@@ -53,7 +53,7 @@ func (r *Route53DomainNameRule) Check(runner tflint.Runner) error {
 	// Put a log that can be output with `TFLINT_LOG=debug`
 	logger.Debug(fmt.Sprintf("Get %d records", len(resources.Blocks)))
 
-	targetTypes := []string{"A", "AAAA", "CNAME", "CAA"}
+	targetTypes := []string{"A", "AAAA", "CNAME"}
 	// TODO: Fix re
 	nameRegexp := regexp.MustCompile(`^[a-z0-9-_.*]+$`)
 
