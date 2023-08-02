@@ -4,7 +4,7 @@
 tflint-ruleset-domainname
 =========================
 
-Check letters in domain names.
+Check if domain name for DNS record is valid.
 
 **CAUTION: I developed this plugin mainly for my personal usage.
 So there should be many corner cases where this plugin does not cover,
