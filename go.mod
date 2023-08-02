@@ -5,7 +5,6 @@ go 1.20
 require (
 	github.com/hashicorp/hcl/v2 v2.17.0
 	github.com/terraform-linters/tflint-plugin-sdk v0.18.0
-	golang.org/x/exp v0.0.0-20230725093048-515e97ebf090
 )
 
 require (
