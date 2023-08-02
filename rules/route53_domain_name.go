@@ -5,7 +5,6 @@ import (
 	"github.com/terraform-linters/tflint-plugin-sdk/hclext"
 	"github.com/terraform-linters/tflint-plugin-sdk/logger"
 	"github.com/terraform-linters/tflint-plugin-sdk/tflint"
-	"golang.org/x/exp/slices"
 	"regexp"
 )
 
