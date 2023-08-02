@@ -10,7 +10,7 @@ func main() {
 	plugin.Serve(&plugin.ServeOpts{
 		RuleSet: &tflint.BuiltinRuleSet{
 			Name:    "domainname",
-			Version: "0.1.0",
+			Version: "0.0.3",
 			Rules: []tflint.Rule{
 				rules.NewRoute53DomainNameRule(),
 			},
