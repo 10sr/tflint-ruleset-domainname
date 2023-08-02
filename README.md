@@ -1,46 +1,64 @@
-# TFLint Ruleset Template
+
 [![Build Status](https://github.com/terraform-linters/tflint-ruleset-template/workflows/build/badge.svg?branch=main)](https://github.com/terraform-linters/tflint-ruleset-template/actions)
 
-This is a template repository for building a custom ruleset. You can create a plugin repository from "Use this template". See also [Writing Plugins](https://github.com/terraform-linters/tflint/blob/master/docs/developer-guide/plugins.md).
+tflint-ruleset-domainname
+=========================
 
-## Requirements
+Check letters in domain names.
+
+**CAUTION: I developed this plugin mainly for my personal usage.
+So there should be many corner cases where this plugin does not cover,
+and currently this plugin only supports `aws_route53_record` resources.
+(But, contributions are of course welcome :raised_hands:)**
+
+
+
+Requirements
+------------
 
 - TFLint v0.42+
-- Go v1.20
 
-## Installation
 
-TODO: This template repository does not contain release binaries, so this installation will not work. Please rewrite for your repository. See the "Building the plugin" section to get this template ruleset working.
+
+Installation
+------------
 
 You can install the plugin with `tflint --init`. Declare a config in `.tflint.hcl` as follows:
 
+
+
 ```hcl
-plugin "template" {
+plugin "domainname" {
   enabled = true
 
-  version = "0.1.0"
-  source  = "github.com/terraform-linters/tflint-ruleset-template"
+  version = "0.0.3"
+  source  = "github.com/10sr/tflint-ruleset-domainname"
 
   signing_key = <<-KEY
   -----BEGIN PGP PUBLIC KEY BLOCK-----
-  mQINBGCqS2YBEADJ7gHktSV5NgUe08hD/uWWPwY07d5WZ1+F9I9SoiK/mtcNGz4P
-  JLrYAIUTMBvrxk3I+kuwhp7MCk7CD/tRVkPRIklONgtKsp8jCke7FB3PuFlP/ptL
-  SlbaXx53FCZSOzCJo9puZajVWydoGfnZi5apddd11Zw1FuJma3YElHZ1A1D2YvrF
+
+  mQINBGTHqDgBEADIxKlgONJ3IREBc5P5nr+pmHBnNwanXtR2nNnUFUj4Ro3Q5og5
+  G+evy7n3nShuNbgY64vO3glUPs1vOqgPllRuxRepBoDrplqOHoOFwCvNUQjp8IpM
+  LjhvHvwfgX2kOkTdBkTQwf6fLs67xVsXE1pBj8tQq4j5TfOJ/+tofn6N2kokDxXD
   ...
   KEY
 }
 ```
 
-## Rules
+`signing_key` is available from [signing_key.pub](signing_key.pub).
+
+
+Rules
+-----
 
 |Name|Description|Severity|Enabled|Link|
 | --- | --- | --- | --- | --- |
-|aws_instance_example_type|Example rule for accessing and evaluating top-level attributes|ERROR|✔||
-|aws_s3_bucket_example_lifecycle_rule|Example rule for accessing top-level/nested blocks and attributes under the blocks|ERROR|✔||
-|google_compute_ssl_policy|Example rule with a custom rule config|WARNING|✔||
-|terraform_backend_type|Example rule for accessing other than resources|ERROR|✔||
+|route53_domain_name|Check letters in route53 domain name (Supports A, AAAA, CNAME, CAA type)|ERROR|✔|[AWS Doc](https://docs.aws.amazon.com/Route53/latest/DeveloperGuide/DomainNameFormat.html#domain-name-format-hosted-zones)|
 
-## Building the plugin
+
+
+Building the plugin
+-------------------
 
 Clone the repository locally and run the following command:
 
@@ -58,7 +76,7 @@ You can run the built plugin like the following:
 
 ```
 $ cat << EOS > .tflint.hcl
-plugin "template" {
+plugin "domainname" {
   enabled = true
 }
 EOS
