@@ -18,7 +18,7 @@ func Test_Route53DomainName(t *testing.T) {
 			Content: `
 resource "aws_route53_record" "invalid" {
     type = "A"
-    name = "不適切なドメイン.example.com"
+    name = "invalid domain.example.com"
 }
 resource "aws_route53_record" "valid" {
     type = "A"
@@ -28,14 +28,28 @@ resource "aws_route53_record" "valid" {
 			Expected: helper.Issues{
 				{
 					Rule:    NewRoute53DomainNameRule(),
-					Message: "Invalid name for record: 不適切なドメイン.example.com",
+					Message: "Invalid name for record: invalid domain.example.com",
 					Range: hcl.Range{
 						Filename: "resource.tf",
 						Start:    hcl.Pos{Line: 4, Column: 12},
-						End:      hcl.Pos{Line: 4, Column: 34},
+						End:      hcl.Pos{Line: 4, Column: 40},
 					},
 				},
 			},
+		},
+		{
+			Name: "no issue",
+			Content: `
+resource "aws_route53_record" "underscore" {
+    type = "A"
+    name = "_valid.example.com"
+}
+resource "aws_route53_record" "asterisk" {
+    type = "A"
+    name = "*.example.com"
+}
+`,
+			Expected: helper.Issues{},
 		},
 	}
 
