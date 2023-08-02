@@ -1,5 +1,5 @@
 
-[![Build Status](https://github.com/terraform-linters/tflint-ruleset-template/workflows/build/badge.svg?branch=main)](https://github.com/terraform-linters/tflint-ruleset-template/actions)
+[![Build Status](https://github.com/10sr/tflint-ruleset-domainname/workflows/build/badge.svg?branch=main)](https://github.com/10sr/tflint-ruleset-domainname/actions)
 
 tflint-ruleset-domainname
 =========================
