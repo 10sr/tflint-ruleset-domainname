@@ -18,7 +18,7 @@ func Test_Route53DomainName(t *testing.T) {
 			Content: `
 resource "aws_route53_record" "invalid" {
     type = "A"
-    name = "lnvalid_domain.example.com"
+    name = "不適切なドメイン.example.com"
 }
 resource "aws_route53_record" "valid" {
     type = "A"
@@ -28,11 +28,11 @@ resource "aws_route53_record" "valid" {
 			Expected: helper.Issues{
 				{
 					Rule:    NewRoute53DomainNameRule(),
-					Message: "Invalid name for record: lnvalid_domain.example.com",
+					Message: "Invalid name for record: 不適切なドメイン.example.com",
 					Range: hcl.Range{
 						Filename: "resource.tf",
 						Start:    hcl.Pos{Line: 4, Column: 12},
-						End:      hcl.Pos{Line: 4, Column: 40},
+						End:      hcl.Pos{Line: 4, Column: 34},
 					},
 				},
 			},
