@@ -55,7 +55,7 @@ func (r *Route53DomainNameRule) Check(runner tflint.Runner) error {
 
 	targetTypes := []string{"A", "AAAA", "CNAME", "CAA"}
 	// TODO: Fix re
-	nameRegexp := regexp.MustCompile(`^[a-z0-9-.]+$`)
+	nameRegexp := regexp.MustCompile(`^[a-z0-9-_.*]+$`)
 
 	for _, resource := range resources.Blocks {
 
