@@ -12,6 +12,20 @@ and currently this plugin only supports `aws_route53_record` resources.
 (But, contributions are of course welcome :raised_hands:)**
 
 
+```hcl
+# Fail
+resource "aws_route53_record" "invalid" {
+    type = "A"
+    name = "invalid domain.example.com"
+}
+
+# Pass
+resource "aws_route53_record" "valid" {
+    type = "A"
+    name = "valid-domain.example.com"
+}
+```
+
 
 Requirements
 ------------
