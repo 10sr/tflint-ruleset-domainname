@@ -1,9 +1,16 @@
-.PHONY: default build test install
+.PHONY: default check test lint lint-gofmt build install
 
 default: build
 
+check: test lint
+
 test:
 	go test ./...
+
+lint: lint-gofmt
+
+lint-gofmt:
+	gofmt -l .
 
 build:
 	go build
