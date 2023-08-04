@@ -67,7 +67,7 @@ Rules
 
 |Name|Description|Severity|Enabled|Link|
 | --- | --- | --- | --- | --- |
-|route53_domain_name|Check letters in route53 domain name (Supports A, AAAA, CNAME type)|ERROR|✔|[AWS Doc](https://docs.aws.amazon.com/Route53/latest/DeveloperGuide/DomainNameFormat.html#domain-name-format-hosted-zones)|
+|route53_domain_name|Check letters in route53 domain name|ERROR|✔|[AWS Doc](https://docs.aws.amazon.com/Route53/latest/DeveloperGuide/DomainNameFormat.html#domain-name-format-hosted-zones)|
 
 
 
