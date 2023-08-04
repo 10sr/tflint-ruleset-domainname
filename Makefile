@@ -1,3 +1,5 @@
+.PHONY: default build test install
+
 default: build
 
 test:
